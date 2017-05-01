@@ -53,6 +53,9 @@ pageEncoding="ISO-8859-1"%>
                 <li><a href="/prototipoWEB/html/ingresoDatos.jsp"><i class="fa fa-database"></i> Ingreso datos </a>
 
                 </li>
+                <li><a href="/prototipoWEB/html/ingresoEstructuras.jsp"><i class="fa fa-database"></i> Ingreso estructuras </a>
+                   
+                  </li>
                 <li><a href="/prototipoWEB/Metricas"><i class="fa fa-bar-chart"></i> Calidad </span></a>
 
                 </li>

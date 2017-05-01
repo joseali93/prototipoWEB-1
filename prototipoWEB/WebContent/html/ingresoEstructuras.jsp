@@ -49,13 +49,15 @@
                   <li><a href="/prototipoWEB/html/ingresoDatos.jsp"><i class="fa fa-database"></i> Ingreso datos </a>
                    
                   </li>
+                  <li><a href="/prototipoWEB/html/ingresoEstructuras.jsp"><i class="fa fa-database"></i> Ingreso estructuras </a>
+                   
+                  </li>
                   <li><a href="/prototipoWEB/Metricas"><i class="fa fa-bar-chart"></i> Calidad </span></a>
                    
                   </li>
                   <li><a href="/prototipoWEB/html/opendata.html"><i class="fa fa-check-square-o"></i> Madurez </a>
                    
                   </li>
-                  
                 </ul>
               </div>
               
@@ -104,15 +106,15 @@
         <div class="container">
   <h2>Prototipo</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">Ingrese los campos</div>
+    <div class="panel-heading">Ingreso de estructura</div>
     <div class="panel-body">
     	<form method="post" action="/prototipoWEB/IngresoEstructuras">
-        <div class="text-center"> <h1>Ingrese los ID´s</h1></div>
+        <div class="text-center"> <h1>Ingrese un ID</h1></div>
         <div class="row">
-        	<div class="col-md-3 col-md-offset-3">Ingrese la estructura:Los campos deben ir separados por comas (xxxx,xxxx,xxxx)
-								<input type="text" name="campos" class="form-control">
-								Inserte el dominio:
-								<input type="text" name="dominio" class="form-control">
+        	<div class="col-md-3 col-md-offset-3">Ingrese un ID para guardar su estructura en el prototipo para el análisis:
+				<input type="text" name="campos" class="form-control">
+				Inserte el dominio:
+				<input type="text" name="dominio" class="form-control">
 			</div>
         	
 			</div>

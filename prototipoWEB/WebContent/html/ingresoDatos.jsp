@@ -49,6 +49,9 @@
                   <li><a href="/prototipoWEB/html/ingresoDatos.jsp"><i class="fa fa-database"></i> Ingreso datos </a>
                    
                   </li>
+                  <li><a href="/prototipoWEB/html/ingresoEstructuras.jsp"><i class="fa fa-database"></i> Ingreso estructuras </a>
+                   
+                  </li>
                   <li><a href="/prototipoWEB/Metricas"><i class="fa fa-bar-chart"></i> Calidad </span></a>
                    
                   </li>
@@ -104,7 +107,7 @@
         <div class="container">
   <h2>Prototipo</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">Ingrese losID´S</div>
+    <div class="panel-heading">Ingrese los ID´S</div>
     <div class="panel-body">
     	<form method="post" action="/prototipoWEB/recibirDatosServlet">
         <div class="text-center"> <h1>Ingrese los ID´s</h1></div>

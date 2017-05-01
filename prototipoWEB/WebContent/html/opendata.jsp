@@ -81,10 +81,14 @@ table#t01 th {
 							<ul class="nav side-menu">
 								<li><a href="/prototipoWEB/html/ingresoDatos.jsp"><i
 										class="fa fa-database"></i> Ingreso datos </a></li>
+										<li><a href="/prototipoWEB/html/ingresoEstructuras.jsp"><i class="fa fa-database"></i> Ingreso estructuras </a>
+                   
+                  </li>
 								<li><a href="/prototipoWEB/Metricas"><i
 										class="fa fa-bar-chart"></i> Calidad </span></a></li>
 								<li><a href="/prototipoWEB/html/opendata.jsp"><i
 										class="fa fa-check-square-o"></i> Madurez </a></li>
+										
 
 							</ul>
 						</div>
