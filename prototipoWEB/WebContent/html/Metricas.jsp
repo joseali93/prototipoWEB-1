@@ -274,7 +274,7 @@ pageEncoding="ISO-8859-1"%>
     $('.grafico1').empty();
     $('.grafico2').empty();
     $('.grafico3').empty();
-
+    
     $('.grafico1').append('<iframe scrolling="no" style="border-width:0px;" src="http://DESKTOP-OR9DHJV:8080/api/rest/public/process/traceability2?parametroid='+$(this).children().html()+'&amp;width=400&amp;height=300" width="400" height="300"></iframe>');
     $('.grafico2').append('<iframe scrolling="no" style="border-width:0px;" src="http://DESKTOP-OR9DHJV:8080/api/rest/public/process/completness2?parametroid='+$(this).children().html()+'&amp;width=400&amp;height=300" width="400" height="300"></iframe>');
     $('.grafico3').append('<iframe scrolling="no" style="border-width:0px;" src="http://DESKTOP-OR9DHJV:8080/api/rest/public/process/compliance2?parametroid='+$(this).children().html()+'&amp;width=400&amp;height=300" width="400" height="300"></iframe>');

@@ -138,15 +138,12 @@ public class Ingreso {
 						validarEstructura valestruc = new validarEstructura();
 						insertar.InsertarTokens( meta.jsonGetRequest(token,valestruc.id_estructura),token);
 						int res;
-						
 				    	res=MetaData.nondiscrimynatory(token);
 				    	String resul;
 				    	resul=Integer.toString(res);
 				    	insertar.InsertarMongoTokens(token, resul);
 						retorno += "El conjunto de datos "+token+" se inserto<br>";
-						
 					}else{
-						
 						retorno += "El conjunto de datos "+token+" no se inserto porque ya existe en la base de datos<br>";
 					}
 					

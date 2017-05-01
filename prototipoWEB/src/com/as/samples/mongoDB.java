@@ -41,62 +41,39 @@ public class mongoDB {
 		// TODO Auto-generated constructor stub
 	}
 	public void Insertar(String collectionDB, String json,String token) throws JSONException{
-		System.out.println("entre a insertar datos");
+		 System.out.println("entre a insertar datos..."+token);
 		 MongoClient mongoClient = null;
 		 mongoClient = new MongoClient( "localhost" , 27017 );
 		 DB db = mongoClient.getDB( "datos" );
 		 DBCollection collection = db.getCollection(collectionDB);
 		 JSONArray jsonarr = new JSONArray(json);
-		 
 		 for(int i = 0; i < jsonarr.length(); i++){
 		 	JSONObject jsonobj = jsonarr.getJSONObject(i);
-		 	jsonobj.put("cantidad", jsonobj.length());
-		 	
+		 	jsonobj.put("cantidadComplt", jsonobj.length());
+		 	jsonobj.put("idrepositorio", token);
 		 	DBObject dbObject = (DBObject)JSON.parse(jsonobj.toString());
-		 	
 		    collection.insert(dbObject);
-		    
 		 }
-		 System.out.println("termine de ingresar datos en contratos");
+		 System.out.println("termine de ingresar datos en contratos: "+token);
 	}
 	
 	
 		public void InsertarTokens(String json,String token) throws IOException, JSONException{
-				
-				
 			 MongoClient mongoClient = null;
 			 mongoClient = new MongoClient( "localhost" , 27017 );
 			 DB db = mongoClient.getDB( "datos" );
 			 DBCollection collection = db.getCollection("Tokens");
-			 
 			 JSONArray jsonarr = new JSONArray(json);
-			 
 			 for(int i = 0; i < jsonarr.length(); i++){
-			 	JSONObject jsonobj = jsonarr.getJSONObject(i);
-			    jsonobj.put("standard", db.eval("columnasCompletas()"));
-			    System.out.println(jsonobj.toString());
-			    DBObject dbObject = (DBObject)JSON.parse(jsonobj.toString());
+				 JSONObject jsonobj2 = jsonarr.getJSONObject(i);
+			    jsonobj2.put("standard", db.eval("columnasCompletas()"));
+			    System.out.println(jsonobj2.toString());
+			    DBObject dbObject = (DBObject)JSON.parse(jsonobj2.toString());
 			 	collection.insert(dbObject);
-			   
 			 }
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-			 
-	    	
 			System.out.println("ingrese los tokensitos");
-			   
-				
-		
 		}
 	public void InsertarMongoTokens(String Tokens,String valor) throws IOException, JSONException{
-		
-		
 		MongoClient mongoClient = null;
 		mongoClient = new MongoClient( "localhost" , 27017 );
 		DB db = mongoClient.getDB( "datos" );
@@ -105,8 +82,6 @@ public class mongoDB {
 		doc.put("Numero_Token", Tokens);
 		doc.put("Numero", valor);
 		collection.insert(doc);
-		
-
 }
 	static String readFile(String path, Charset encoding) throws IOException 
 	{
