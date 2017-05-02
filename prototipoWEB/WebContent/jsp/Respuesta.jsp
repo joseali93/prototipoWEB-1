@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,14 +18,14 @@
     <!-- Font Awesome -->
     <link href="http://localhost:8081/prototipoWEB/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="http://localhost:8081/prototipoWEB/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
     <link href="http://localhost:8081/prototipoWEB/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="http://localhost:8081/prototipoWEB/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="http://localhost:8081/prototipoWEB/build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -136,6 +137,62 @@
         <!-- /footer content -->
       </div>
     </div>
+    <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog ">
+ 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Estructuras validas</h4>
+      </div>
+      <div class="modal-body">
+       
+       
+        	
+<div class="panel-group" id="accordion">
+<%
+int var=1;
+
+%>
+<c:forEach items="${estructuras}" var="estruc">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<% out.print(var); %>">
+          Estructura <% out.print(var); %> 
+        </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+      </h4>
+    </div>
+    <div id="collapse<% out.print(var); %>" class="panel-collapse collapse in">
+      <div class="panel-body" >
+      <div class="row">
+      	<div class="col-md-6"><p><c:out value="${estruc.tokens}"/></p></div>
+      </div>
+			
+      </div>
+    </div>
+  </div>
+  <% var++; %> 
+  </c:forEach>
+</div>
+			    
+			
+		
+
+		
+		
+		
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
     <!-- jQuery -->
     <script src="http://localhost:8081/prototipoWEB/vendors/jquery/dist/jquery.min.js"></script>

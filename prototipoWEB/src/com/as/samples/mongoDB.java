@@ -147,7 +147,7 @@ public class mongoDB {
 		mongoClient = new MongoClient( "localhost" , 27017 );
 		DB db = mongoClient.getDB( "datos" );
 		DBCollection collection = db.getCollection("Estructuras");
-		BasicDBObject doc = new BasicDBObject();
+		/*BasicDBObject doc = new BasicDBObject();
 		//doc.put("campos", campos.toLowerCase());
 		
 		//StringTokenizer tokenizer = new StringTokenizer(campos, ",");
@@ -171,6 +171,28 @@ public class mongoDB {
 		hs.addAll(keys1);
 		al.clear();
 		al.addAll(hs);
+		Collections.sort(al);*/
+		MetaData meta = new MetaData();
+		List<String> al = new ArrayList<>();
+		 JSONArray jsonarr = new JSONArray(meta.jsonGetRequest(id, null,domain));
+		 JSONObject jsonobj2 = jsonarr.getJSONObject(0);
+		 JSONArray jsonarr2 = jsonobj2.getJSONArray("columns");
+		 System.out.println(jsonarr2.length());
+		 for(int i = 0; i < jsonarr2.length(); i++){
+			
+		    
+			JSONObject jsonobj3 = jsonarr2.getJSONObject(i);
+		    al.add(jsonobj3.get("fieldName").toString());
+		    
+		 }
+		
+		
+		
+		//Set<String> hs = new HashSet<>();
+		//hs.addAll(keys1);
+		
+	
+	
 		Collections.sort(al);
 		String json = "{\"campos\":\""+al.toString().replace("[", "").replace("]","").replaceAll("\\s","")+"\",\"cantidad\":\""+al.size()+"\"}";
 		

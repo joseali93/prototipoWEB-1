@@ -26,6 +26,7 @@ pageEncoding="ISO-8859-1"%>
 
   <!-- Custom Theme Style -->
   <link href="http://localhost:8081/prototipoWEB/build/css/custom.min.css" rel="stylesheet">
+    <link href="http://localhost:8081/prototipoWEB/build/css/table.css" rel="stylesheet">
 </head>
 <style> 
 
@@ -136,7 +137,6 @@ pageEncoding="ISO-8859-1"%>
               </div>
               
               
-              
               <div class="col-md-3 ">
                      <table class="table">
                           <tr>
@@ -154,20 +154,24 @@ pageEncoding="ISO-8859-1"%>
                         </table>
 
 
-
-                        <table class="table">
+	
+                        <table class="table table-striped">
+                        <thead>
                           <tr>
                             <th>Conjuntos de datos almacenados</th>
                           </tr>
+                          </thead>
+                          <tbody>
                           <c:forEach var="ids" items="${tokens_total}">
 
 
                           <tr>
-                            <td><div class="links"><a href="#"><c:out value="${ids.tokens}"/></a></div> </td>
+                            <td class="filterable-cell"><div class="links"><a href="#"><c:out value="${ids.tokens}"/></a></div> </td>
 
                           </tr>
 
                         </c:forEach>
+                        </tbody>
                       </table>
 
 

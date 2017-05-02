@@ -28,9 +28,9 @@ public class MetaData {
 		 return theString;
 		}
 
-		public static String jsonGetRequest(String token,String id_estructura) throws JSONException {
+		public static String jsonGetRequest(String token,String id_estructura,String domain) throws JSONException {
 			//String  urlQueryString ="https://www.datos.gov.co/api/views/"+token+"/rows.json?accessType=DOWNLOAD";
-			String  urlQueryString ="https://www.datos.gov.co/api/views/"+token;
+			String  urlQueryString ="https:/"+domain+"/api/views/"+token;
 			
 		 String json = null;
 		 ObjectNode node = null;
@@ -53,7 +53,8 @@ public class MetaData {
 		   json = streamToString(inStream); // input stream to string
 		  
 		   JSONObject object = new JSONObject(json);
-		   object.put("idestructura", id_estructura);
+		   if(id_estructura!=null){object.put("idestructura", id_estructura);}
+		   
 		   object.put("id", token);
 		   meta = "["+object+"]";
 

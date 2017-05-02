@@ -109,10 +109,10 @@
     <div class="panel-heading">Ingreso de estructura</div>
     <div class="panel-body">
     	<form method="post" action="/prototipoWEB/IngresoEstructuras">
-        <div class="text-center"> <h1>Ingrese un ID</h1></div>
+        <div class="text-center"> <h1>Ingreso de estructura</h1></div>
         <div class="row">
         	<div class="col-md-3 col-md-offset-3">Ingrese un ID para guardar su estructura en el prototipo para el análisis:
-				<input type="text" name="campos" class="form-control">
+				<input type="text" name="campos" class="form-control" maxlength="9">
 				Inserte el dominio:
 				<input type="text" name="dominio" class="form-control">
 			</div>

@@ -19,6 +19,8 @@ import com.socrata.model.importer.LicenseInfo;
 import com.socrata.model.search.SearchClause;
 import com.socrata.model.soql.SoqlQuery;
 import com.sun.jersey.api.client.ClientResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 import java.io.File;
@@ -40,62 +42,13 @@ import java.util.StringTokenizer;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+
 import com.google.gson.Gson;
 import java.util.List;
 import java.lang.StringBuilder;
 
 public class Ingreso {
-	List<String> structureOne = Arrays.asList(
-			"codigo_contrato", 
-			"codigo_del_proyecto", 
-			"disponibilidades_presupuestales", 
-			"evento", 
-			"fecha_inicio", 
-			"fecha_suscripcion", 
-			"identificacion_contratista", 
-			"identificacion_interventor", 
-			"no_contrato_interventor", 
-			"nombre_contratista", 
-			"nombre_del_interventor", 
-			"nombre_del_proyecto", 
-			"objeto_del_contrato", 
-			"plazo_estimado", 
-			"proceso_de_contratacion", 
-			"registros_presupuestales", 
-			"sector_del_proyecto", 
-			"sujeto_de_control", 
-			"tipo_de_registro", 
-			"tipo_interventor", 
-			"tipologia", 
-			"valor_contrato", 
-			"valor_del_proyecto", 
-			"valor_ejecutado_del_proyecto");
-	List<String> structureTwo= Arrays.asList(
-			 "c_digo_contrato",
-			 "c_digo_del_proyecto",
-			 "disponibilidades_presupuestales",
-			 "evento",
-			 "fecha_inicio",
-			 "fecha_suscripci_n",
-			 "identificaci_n_contratista",
-			 "identificaci_ninterventor",
-			 "no_contrato_interventor",
-			 "nombre_del_interventor",
-			 "nombre_delproyecto",
-			 "nombrecontratista",
-			 "objeto_del_contrato",
-			 "plazo_estimado",
-			 "proceso_de_contrataci_n",
-			 "registros_presupuestales",
-			 "sector_del_proyecto",
-			 "sujeto_de_control",
-			 "tipo_de_registro",
-			 "tipo_interventor",
-			 "tipolog_a",
-			 "valor_contrato",
-			 "valor_delproyecto",
-			 "valor_ejecutadodel_proyecto");
 	public Ingreso() {
 		// TODO Auto-generated constructor stub
 	}
@@ -116,13 +69,28 @@ public class Ingreso {
 	    		HttpLowLevel.JSON_TYPE,
 	    		"SELECT * LIMIT 2000");
 			    payload = response.getEntity(String.class);
-			   
-				List keys1 = getKeysFromJson(payload);	
+			    MetaData meta = new MetaData();
 				List<String> al = new ArrayList<>();
-				Set<String> hs = new HashSet<>();
-				hs.addAll(keys1);
-				al.clear();
-				al.addAll(hs);
+				List keys1 = getKeysFromJson(payload);	
+				JSONArray jsonarr = new JSONArray(meta.jsonGetRequest(token, null,domain));
+				 JSONObject jsonobj2 = jsonarr.getJSONObject(0);
+				 JSONArray jsonarr2 = jsonobj2.getJSONArray("columns");
+				 System.out.println(jsonarr2.length());
+				 for(int j = 0; j < jsonarr2.length(); j++){
+					
+				    
+					JSONObject jsonobj3 = jsonarr2.getJSONObject(j);
+				    al.add(jsonobj3.get("fieldName").toString());
+				    
+				 }
+				
+				
+				
+				//Set<String> hs = new HashSet<>();
+				//hs.addAll(keys1);
+				
+			
+			
 				Collections.sort(al);
 				mongoDB insertar = new mongoDB();
 				validarEstructura validacion = new validarEstructura();
@@ -132,11 +100,11 @@ public class Ingreso {
 					System.out.println("pase la estructura");
 					if(insertar.validacion(token)){
 						System.out.println("entre a empezar a ingresar");
-						MetaData meta = new MetaData();
+						
 						insertar.Insertar("contratos",payload,token);
 						System.out.println("en medio de ambos");
 						validarEstructura valestruc = new validarEstructura();
-						insertar.InsertarTokens( meta.jsonGetRequest(token,valestruc.id_estructura),token);
+						insertar.InsertarTokens( meta.jsonGetRequest(token,valestruc.id_estructura,domain),token);
 						int res;
 				    	res=MetaData.nondiscrimynatory(token);
 				    	String resul;
@@ -149,7 +117,10 @@ public class Ingreso {
 					
 					
 				}else{
-					retorno += "El conjunto de datos "+token+" no se inserto porque no cumple con la siguiente estuctura ["+implode(", ",structureOne)+"] <br>";
+					retorno += "El conjunto de datos "+token+" no se inserto porque no cumple con ninguna de las siguientes estructuras "
+							+ "<button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#myModal\">Ver estructuras</button>"
+
+							+ " <br>";
 				}
 			}catch(Exception e){
 				System.out.println(e);

@@ -1,11 +1,19 @@
 package com.as.samples;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.MongoClient;
 
 /**
  * Servlet implementation class recibirDatosServlet
@@ -27,7 +35,28 @@ public class recibirDatosServlet extends HttpServlet {
 		try {	
 			String resultado = validacion.Ingresar(ids,domain);
 			request.getSession().setAttribute("mensaje", resultado);
-			response.sendRedirect("jsp/Respuesta.jsp");
+			MongoClient mongoClient = null;
+			 mongoClient = new MongoClient( "localhost" , 27017 );
+			 DB db = mongoClient.getDB( "datos" );
+			 DBCollection collection = db.getCollection("Estructuras");
+			 DBCursor cursor = collection.find();
+			 ArrayList<tokens> idesitos = new ArrayList<tokens>();
+			while(cursor.hasNext()) {
+			   //System.out.println(cursor.next().get("id"));
+			    tokens ids1 = new tokens();
+			    String campos =cursor.next().get("campos").toString();
+			    ids1.setTokens(campos.replace(",", ", "));
+			    idesitos.add(ids1);
+			}
+		
+		
+			request.setAttribute("estructuras", idesitos);
+			
+			
+			RequestDispatcher view = request.getRequestDispatcher("jsp/Respuesta.jsp");
+			view.forward(request, response);
+		
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -60,6 +60,14 @@ public void setId(String id) {
 		Collections.sort(estructure);
 		//System.out.println("validacion estructura:");
 		//System.out.println(Arrays.asList(al).containsAll(Arrays.asList(estructure)));
+		for(int i = 0; i < al.size(); i++) {
+            System.out.println(al.get(i).toString());
+        }
+		System.out.println("--------");
+		/*for(int i = 0; i < estructure.size(); i++) {
+            System.out.println(estructure.get(i).toString());
+        }*/
+		System.out.println("----------------------------------------------------------------");
 		return Arrays.asList(al).containsAll(Arrays.asList(estructure));
 	}
 	static List getKeysFromJson(String json) throws Exception

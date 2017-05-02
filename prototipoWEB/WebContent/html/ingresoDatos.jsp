@@ -116,7 +116,7 @@
 								<input type="text" name="ids" class="form-control">
 			</div>
         	<div class="col-md-3">Ingrese el dominio:<br><br>
-								<input type="text" name="domain" class="form-control"><br>
+								<input type="text" name="domain" class="form-control" value="www.datos.gov.co"><br>
 			</div>
         	<div class="col-md-1"><br><br><input type="submit" value="enviar" class="form-control"></div>
         </div>
