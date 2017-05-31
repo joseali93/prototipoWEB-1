@@ -11,21 +11,21 @@ pageEncoding="ISO-8859-1"%>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Prototipo </title>
+    <title>Prototype </title>
 
     <!-- Bootstrap -->
-    <link href="http://localhost:8081/prototipoWEB/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://54.202.53.71:8080/prototipoWEBFINAL/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="http://localhost:8081/prototipoWEB/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://54.202.53.71:8080/prototipoWEBFINAL/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="http://localhost:8081/prototipoWEB/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="http://54.202.53.71:8080/prototipoWEBFINAL/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
-    <link href="http://localhost:8081/prototipoWEB/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="http://54.202.53.71:8080/prototipoWEBFINAL/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="http://localhost:8081/prototipoWEB/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="http://54.202.53.71:8080/prototipoWEBFINAL/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     
     <!-- Custom Theme Style -->
-    <link href="http://localhost:8081/prototipoWEB/build/css/custom.min.css" rel="stylesheet">
+    <link href="http://54.202.53.71:8080/prototipoWEBFINAL/build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -34,7 +34,7 @@ pageEncoding="ISO-8859-1"%>
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-cogs"></i> <span>Prototipo</span></a>
+              <a href="ingresoDatos.jsp" class="site_title"><i class="fa fa-cogs"></i> <span>Prototype</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -47,16 +47,16 @@ pageEncoding="ISO-8859-1"%>
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="/prototipoWEB/html/ingresoDatos.jsp"><i class="fa fa-database"></i> Ingreso datos </a>
+                  <li><a href="/prototipoWEBFINAL/html/ingresoDatos.jsp"><i class="fa fa-database"></i> Add data </a>
                    
                   </li>
-                  <li><a href="/prototipoWEB/html/ingresoEstructuras.jsp"><i class="fa fa-database"></i> Ingreso estructuras </a>
+                  <li><a href="/prototipoWEBFINAL/html/ingresoEstructuras.jsp"><i class="fa fa-database"></i> Add structure </a>
                    
                   </li>
-                  <li><a href="/prototipoWEB/Metricas"><i class="fa fa-bar-chart"></i> Calidad </span></a>
+                  <li><a href="/prototipoWEBFINAL/Metricas"><i class="fa fa-bar-chart"></i> Data quality </span></a>
                    
                   </li>
-                  <li><a href="/prototipoWEB/html/opendata.html"><i class="fa fa-check-square-o"></i> Madurez </a>
+                  <li><a href="/prototipoWEBFINAL/html/opendata.jsp"><i class="fa fa-check-square-o"></i> Data maturity </a>
                    
                   </li>
                   
@@ -108,8 +108,8 @@ pageEncoding="ISO-8859-1"%>
         <div class="container">
   <div class="panel panel-default">
     <div class="panel-body">
-    	<form method="post" action="/prototipoWEB/recibirDatosServlet">
-        <div class="text-center"> <h1>Ingreso de datos</h1></div>
+    	<form method="post" action="/prototipoWEBFINAL/recibirDatosServlet">
+        <div class="text-center"> <h1>Add data</h1></div>
         <div class="row">
         	        <p class="lead">
           <%= session.getAttribute("mensaje") %>
@@ -145,7 +145,7 @@ pageEncoding="ISO-8859-1"%>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Estructuras validas</h4>
+        <h4 class="modal-title">Valid structures</h4>
       </div>
       <div class="modal-body">
        
@@ -161,7 +161,7 @@ int var=1;
     <div class="panel-heading">
       <h4 class="panel-title">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<% out.print(var); %>">
-          Estructura <% out.print(var); %> 
+          Structure <% out.print(var); %> 
         </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
       </h4>
     </div>
@@ -187,7 +187,7 @@ int var=1;
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -195,12 +195,12 @@ int var=1;
 </div>
 
     <!-- jQuery -->
-    <script src="http://localhost:8081/prototipoWEB/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="http://54.202.53.71:8080/prototipoWEBFINAL/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="http://localhost:8081/prototipoWEB/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="http://54.202.53.71:8080/prototipoWEBFINAL/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <!-- Custom Theme Scripts -->
-    <script src="http://localhost:8081/prototipoWEB/build/js/custom.min.js"></script>
+    <script src="http://54.202.53.71:8080/prototipoWEBFINAL/build/js/custom.min.js"></script>
 
   </body>
 </html>

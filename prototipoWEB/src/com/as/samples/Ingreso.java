@@ -67,11 +67,12 @@ public class Ingreso {
 	    		
 	    		response = consumer.query(token,
 	    		HttpLowLevel.JSON_TYPE,
-	    		"SELECT * LIMIT 2000");
+	    		"SELECT * LIMIT 50000");
 			    payload = response.getEntity(String.class);
 			    MetaData meta = new MetaData();
 				List<String> al = new ArrayList<>();
 				List keys1 = getKeysFromJson(payload);	
+				System.out.println("hola");
 				JSONArray jsonarr = new JSONArray(meta.jsonGetRequest(token, null,domain));
 				 JSONObject jsonobj2 = jsonarr.getJSONObject(0);
 				 JSONArray jsonarr2 = jsonobj2.getJSONArray("columns");
@@ -110,14 +111,14 @@ public class Ingreso {
 				    	String resul;
 				    	resul=Integer.toString(res);
 				    	insertar.InsertarMongoTokens(token, resul);
-						retorno += "El conjunto de datos "+token+" se inserto<br>";
+						retorno += "The dataset "+token+" is inserted<br>";
 					}else{
-						retorno += "El conjunto de datos "+token+" no se inserto porque ya existe en la base de datos<br>";
+						retorno += "The dataset "+token+" Not inserted because it already exists in the database<br>";
 					}
 					
 					
 				}else{
-					retorno += "El conjunto de datos "+token+" no se inserto porque no cumple con ninguna de las siguientes estructuras "
+					retorno += "The dataset "+token+" Not inserted because it does not meet any of the following structures "
 							+ "<button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"modal\" data-target=\"#myModal\">Ver estructuras</button>"
 
 							+ " <br>";
@@ -125,7 +126,7 @@ public class Ingreso {
 			}catch(Exception e){
 				System.out.println(e);
 				
-				retorno += "El conjunto de datos "+token+" no existe en "+domain+"<br>";
+				retorno += "The dataset "+token+" does not exist in "+domain+"<br>";
 			}		
 	    }
 		return retorno;	

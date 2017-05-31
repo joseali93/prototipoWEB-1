@@ -84,13 +84,13 @@ public class IngresoEstructuras extends HttpServlet {
 			System.out.println("1");
 			if(valestruc.validacion(al)){
 				System.out.println("2");
-				request.getSession().setAttribute("mensaje", "Esta estructura ya existe");
+				request.getSession().setAttribute("mensaje", "This structure already exists");
 				System.out.println("3");
 			}else{
 				System.out.println("4");
 				insertar.insertarEstructura(ids,dominio);
 				System.out.println("5");
-				request.getSession().setAttribute("mensaje", "Estructura insertada correctamente");
+				request.getSession().setAttribute("mensaje", "Properly inserted structure");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
